@@ -22,7 +22,7 @@ namespace lab_6_inheritance
 
     class Labrador : Dog
     {
-        public int Age { get; set; };
+        public int Age { get; set; }
 
     }
 }
