@@ -1,0 +1,12 @@
+﻿<Window x:Class="wpf_rabbits_explosion_new.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpf_rabbits_explosion_new"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Canvas x:Name="mainCanvas" Height="450" Width="800">
+        <Button Panel.ZIndex="1" x:Name="CreateRabbit" Height="20" Width="100" Canvas.Left="684" Content="Create Rabbit" Canvas.Top="390" Click="CreateRabbit_Click" ></Button>
+    </Canvas>
+</Window>

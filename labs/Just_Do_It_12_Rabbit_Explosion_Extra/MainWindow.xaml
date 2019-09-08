@@ -1,0 +1,124 @@
+﻿<Window x:Class="Just_Do_It_12_Rabbit_Explosion_Extra.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Just_Do_It_12_Rabbit_Explosion_Extra"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="btnSpecial" >
+            <Setter Property="Margin" Value="0,0,0,5" />
+            <Setter Property="Height" Value="26" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="10"
+                                            BorderThickness="2"
+                                            Padding="5,0"
+                                            BorderBrush="#000">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Opacity" Value="0.5"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" Value="CornflowerBlue" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter Property="Background" Value="SkyBlue" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Canvas x:Name="mainCanvas" >
+        <Rectangle Panel.ZIndex="-1" Fill="#AA97CAE6" HorizontalAlignment="Left" Height="180" Grid.Row="1" Stroke="Transparent" VerticalAlignment="Top" Width="794" Grid.ColumnSpan="2" Canvas.Top="240"/>
+        <Rectangle Panel.ZIndex="-1" Fill="#BB97CAE6" HorizontalAlignment="Left" Height="180" Grid.Row="1" Stroke="Transparent" VerticalAlignment="Top" Width="5" Grid.ColumnSpan="2" Canvas.Top="240" Canvas.Left="506" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <TextBlock Height="50" Width="200" >
+
+        </TextBlock>
+
+        <TextBlock FontWeight="Bold" Height="24" Width="101" Canvas.Left="526" Canvas.Top="270" >New Rabbit</TextBlock>
+        <TextBox x:Name="rName" VerticalContentAlignment="Center" Text="" Height="25" Canvas.Left="605" TextWrapping="Wrap" Canvas.Top="293" Width="146"/>
+        <Label Content="Rabbit Name: " Canvas.Left="521" Canvas.Top="294" RenderTransformOrigin="1.413,0.651" Width="86"/>
+        <TextBox x:Name="rAge"  VerticalContentAlignment="Center"  Height="25" Canvas.Left="605" TextWrapping="Wrap" Text="" Canvas.Top="328" Width="48"/>
+        <Label Content="Rabbit Age: " Canvas.Left="521" Canvas.Top="327" RenderTransformOrigin="1.413,0.651" Width="81"/>
+        <Button x:Name="newRabbit"  Style ="{StaticResource  btnSpecial}" Content="Create Rabbit" Canvas.Left="658" Canvas.Top="327" Height="25" Width="93" Click="NewRabbit_Click" Margin="0"/>
+        <TextBlock x:Name="DisplayRabbit" Visibility="Hidden" Canvas.Left="87" TextAlignment="Left" TextWrapping="Wrap" Text="" Canvas.Top="77" Height="189" Width="139"/>
+        <DockPanel x:Name="RabbitsListContainer" GotFocus="RabbitsListBox_GotFocus" LostFocus="RabbitsListBox_LostFocus" Canvas.Left="30" Canvas.Top="271" Height="111">
+            <StackPanel DockPanel.Dock="Right" Margin="10,0">
+                <StackPanel.Resources>
+                    <Style TargetType="Button" x:Key="btnRounded" >
+                        <Setter Property="Margin" Value="0,0,0,5" />
+                        <Setter Property="Height" Value="26" />
+                        <Setter Property="FontWeight" Value="SemiBold" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            CornerRadius="12"
+                                            BorderThickness="2"
+                                            Padding="5,0"
+                                            BorderBrush="#000">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        </ContentPresenter>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="CornflowerBlue" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" Value="SkyBlue" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock FontWeight="Bold" Margin="0,0,0,5">Rabbits Control</TextBlock>
+                <Button Name="btnDeleteSelection" Style ="{StaticResource  btnRounded}" Click="BtnDeleteSelection_Click" >Delete Selection</Button>
+                <Button Name="btnUpdateSelectedRabbit" Style ="{StaticResource  btnRounded}" Click="BtnUpdateSelectedRabbit_Click" >Edit selected</Button>
+                <Button Name="btnSelectNewestRabbit" Style ="{StaticResource  btnRounded}" Click="BtnSelectNewestRabbit_Click" >End of list</Button>
+            </StackPanel>
+            <ListView x:Name="RabbitsListBox" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Canvas.Left="533" Canvas.Top="77" Width="340" Margin="0,0,0,0.2" SelectionChanged="RabbitsListBox_SelectionChanged" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding RabbitId}" />
+                        <GridViewColumn Header="Rabbit Name" Width="162" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Age" Width="100" DisplayMemberBinding="{Binding Age}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+        <Grid x:Name="ImageGrid" Width="794" Height="420" HorizontalAlignment="Center" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+    </Canvas>
+</Window>
