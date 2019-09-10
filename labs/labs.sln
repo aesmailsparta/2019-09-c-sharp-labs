@@ -61,6 +61,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Just_Do_It_12_Rabbit_Explos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Just_Do_It_12_Rabbit_Explosion_Extra", "Just_Do_It_12_Rabbit_Explosion_Extra\Just_Do_It_12_Rabbit_Explosion_Extra.csproj", "{F4505D5C-DEA0-4C65-A6D6-D41B5696F4B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab_18_Rabbit_Database_CRUD", "lab_18_Rabbit_Database_CRUD\lab_18_Rabbit_Database_CRUD.csproj", "{8892538B-5B1A-4335-90FB-4DB266A0213B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniBank", "MiniBank\MiniBank.csproj", "{0083CDC4-9379-4EE5-BF25-484BF1232666}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -183,6 +187,14 @@ Global
 		{F4505D5C-DEA0-4C65-A6D6-D41B5696F4B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4505D5C-DEA0-4C65-A6D6-D41B5696F4B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4505D5C-DEA0-4C65-A6D6-D41B5696F4B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8892538B-5B1A-4335-90FB-4DB266A0213B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8892538B-5B1A-4335-90FB-4DB266A0213B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8892538B-5B1A-4335-90FB-4DB266A0213B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8892538B-5B1A-4335-90FB-4DB266A0213B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0083CDC4-9379-4EE5-BF25-484BF1232666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0083CDC4-9379-4EE5-BF25-484BF1232666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0083CDC4-9379-4EE5-BF25-484BF1232666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0083CDC4-9379-4EE5-BF25-484BF1232666}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
