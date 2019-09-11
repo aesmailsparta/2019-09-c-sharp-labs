@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="Auto" Width="Auto">
     <Grid>
-        <TabControl x:Name="TabController" SelectionChanged="TabController_SelectionChanged" >
+        <TabControl x:Name="TabController" >
             <TabItem x:Name="Home" Visibility="Collapsed" Header="Home">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -99,15 +99,16 @@
                         <RowDefinition Height="4*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" >NEW ACCOUNT</Label>
+                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="LightSteelBlue" >NEW ACCOUNT</Label>
 
                     <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="13" FontWeight="Bold" >Customer Name</Label>
                     <TextBox x:Name="accountCustomerName" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
 
                     <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="13" FontWeight="Bold" >PIN</Label>
-                    <TextBox x:Name="accountCustomerPIN" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
+                    <PasswordBox x:Name="accountCustomerPIN" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
 
-                    <Button x:Name="btn_OpenNewAccount" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="40,10,0,0" Content="Open Account" FontSize="15" FontWeight="bold" />
+                    <Button x:Name="btn_OpenNewAccount" Click="Btn_OpenNewAccount_Click" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="40,10,0,0" Content="Open Account" FontSize="15" FontWeight="bold" />
+                    <TextBlock x:Name="newAccountError" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="40,10,0,0" FontSize="15" Foreground="PaleVioletRed" />
 
                     <Button Click="NavHomeButton_Click" Grid.Row="7" Grid.Column="4" Height="30" Width="100" Content="Home" FontSize="20" FontWeight="Bold"/>
                 </Grid>
@@ -131,21 +132,19 @@
                         <RowDefinition Height="4*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" >WITHDRAW</Label>
-
-                    <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="13" FontWeight="Bold" >Customer Name:</Label>
-                    <TextBox x:Name="wCustomerName" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
+                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="LightSteelBlue" >WITHDRAW</Label>
 
                     <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="13" FontWeight="Bold" >PIN:</Label>
-                    <TextBox x:Name="wCustomerPIN" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
+                    <PasswordBox x:Name="wCustomerPIN" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
                     
-                    <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="13" FontWeight="Bold" >Account:</Label>
-                    <TextBox x:Name="wAccount" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
+                    <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="13" FontWeight="Bold" >Account Number:</Label>
+                    <TextBox x:Name="wAccountNumber" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
 
                     <Label Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="13" FontWeight="Bold" >Amount(£):</Label>
                     <TextBox x:Name="wAmount" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
 
-                    <Button x:Name="btn_Withdraw" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="40,10,0,0" Content="Withdraw" FontSize="15" FontWeight="bold" Background="PaleVioletRed" />
+                    <Button x:Name="btn_Withdraw" Click="Btn_Withdraw_Click" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="40,10,0,0" Content="Withdraw" FontSize="15" FontWeight="bold" Background="PaleVioletRed" />
+                    <TextBlock x:Name="wError" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="5" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="40,10,0,0" FontSize="15" Foreground="PaleVioletRed" />
 
                     <Button Click="NavHomeButton_Click" Grid.Row="7" Grid.Column="4" Height="30" Width="100" Content="Home" FontSize="20" FontWeight="Bold"/>
                 </Grid>
@@ -169,21 +168,19 @@
                         <RowDefinition Height="4*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" >Deposit</Label>
-
-                    <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="13" FontWeight="Bold" >Customer Name:</Label>
-                    <TextBox x:Name="dCustomerName" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
+                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="LightSteelBlue" >Deposit</Label>
 
                     <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="13" FontWeight="Bold" >PIN:</Label>
-                    <TextBox x:Name="dCustomerPIN" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
+                    <PasswordBox x:Name="dCustomerPIN" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
 
                     <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="13" FontWeight="Bold" >Account:</Label>
-                    <TextBox x:Name="dAccount" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
+                    <TextBox x:Name="dAccountNumber" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
 
                     <Label Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="13" FontWeight="Bold" >Amount(£):</Label>
                     <TextBox x:Name="dAmount" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="40,0,0,0" />
 
-                    <Button x:Name="btn_Deposit" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="40,10,0,0" Content="Deposit" FontSize="15" FontWeight="bold" Background="LightGreen" />
+                    <Button x:Name="btn_Deposit" Click="Btn_Deposit_Click" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Center" Margin="40,10,0,0" Content="Deposit" FontSize="15" FontWeight="bold" Background="LightGreen" />
+                    <TextBlock x:Name="dError" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="5" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="40,10,0,0" FontSize="15" Foreground="PaleVioletRed" />
 
                     <Button Click="NavHomeButton_Click" Grid.Row="7" Grid.Column="4" Height="30" Width="100" Content="Home" FontSize="20" FontWeight="Bold"/>
                 </Grid>
@@ -219,6 +216,56 @@
                     <TextBlock x:Name="loginError" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="5" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="40,10,0,0" FontSize="15" Foreground="PaleVioletRed" />
 
                     <Button Click="NavHomeButton_Click" Grid.Row="7" Grid.Column="4" Height="30" Width="100" Content="Home" FontSize="20" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Dashboard" Visibility="Collapsed" Header="Dashboard">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label x:Name="DashboardTitle" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="LightSteelBlue" ></Label>
+                    <Label HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom" FontSize="15" FontWeight="Bold" Foreground="LightBlue" >My Accounts</Label>
+
+                    <ListView x:Name="CustomerAccountsList" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top" Height="100" Width="400" Margin="20,0,0,0.2" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="AccountNumber" Width="260" DisplayMemberBinding="{Binding AccountNumber}" />
+                                <GridViewColumn Header="Current Balance" Width="130" DisplayMemberBinding="{Binding Amount}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    
+                    <Label HorizontalAlignment="Left" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom" FontSize="15" FontWeight="Bold" Foreground="LightBlue" >Previous Transactions</Label>
+
+                    <ListView x:Name="CustomerTransactions" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="5" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top" Height="150" Width="500" Margin="20,0,0,0.2" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Account ID" Width="70" DisplayMemberBinding="{Binding AccountNumber}" />
+                                <GridViewColumn Header="Transaction Type" Width="110" DisplayMemberBinding="{Binding TypeName}" />
+                                <GridViewColumn Header="Amount" Width="90" DisplayMemberBinding="{Binding Amount}" />
+                                <GridViewColumn Header="Previous Balance" Width="110" DisplayMemberBinding="{Binding PreviousBalance}" />
+                                <GridViewColumn Header="New Balance" Width="110" DisplayMemberBinding="{Binding NewBalance}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <Button Click="NavHomeButton_Click" Grid.Row="7" Grid.Column="6" Height="30" Width="100" Content="Home" FontSize="20" FontWeight="Bold"/>
                 </Grid>
             </TabItem>
             <TabItem Visibility="Collapsed" Header="History" />

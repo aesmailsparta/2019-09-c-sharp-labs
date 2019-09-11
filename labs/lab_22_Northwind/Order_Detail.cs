@@ -7,16 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MiniBank
+namespace lab_22_Northwind
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class Order_Detail
     {
-        public int AccountID { get; set; }
-        public Nullable<int> CustomerID { get; set; }
-        public string AccountNumber { get; set; }
-        public Nullable<decimal> Amount { get; set; }
+        public int OrderID { get; set; }
+        public int ProductID { get; set; }
+        public decimal UnitPrice { get; set; }
+        public short Quantity { get; set; }
+        public float Discount { get; set; }
+    
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

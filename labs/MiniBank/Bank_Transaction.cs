@@ -16,7 +16,9 @@ namespace MiniBank
     {
         public int TransactionID { get; set; }
         public Nullable<int> AccountID { get; set; }
-        public Nullable<int> Amount { get; set; }
+        public Nullable<decimal> Amount { get; set; }
         public Nullable<int> TransactionType { get; set; }
+        public Nullable<decimal> PreviousBalance { get; set; }
+        public Nullable<decimal> NewBalance { get; set; }
     }
 }

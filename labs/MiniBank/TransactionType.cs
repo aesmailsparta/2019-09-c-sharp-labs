@@ -12,11 +12,9 @@ namespace MiniBank
     using System;
     using System.Collections.Generic;
     
-    public partial class Account
+    public partial class TransactionType
     {
-        public int AccountID { get; set; }
-        public Nullable<int> CustomerID { get; set; }
-        public string AccountNumber { get; set; }
-        public Nullable<decimal> Amount { get; set; }
+        public int TypeID { get; set; }
+        public string TypeName { get; set; }
     }
 }

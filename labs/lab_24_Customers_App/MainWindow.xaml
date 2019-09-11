@@ -1,0 +1,149 @@
+﻿<Window x:Class="lab_24_Customers_App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab_24_Customers_App"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="Auto" Width="Auto" FontSize="18" >
+    <Window.Resources>
+        <Style x:Key="back" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="C:/2019-09-c-sharp-labs/labs/lab_24_Customers_App/Images/left.png" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="next" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.8" />
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="C:/2019-09-c-sharp-labs/labs/lab_24_Customers_App/Images/left.png" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#EDEEFF" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label x:Name="LabelTitle" Content="Customer App" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Grid.Column="0" Grid.ColumnSpan="5" Background="#E0F2FF" FontSize="40" Foreground="SlateGray" FontFamily="Tahoma" />
+        <StackPanel x:Name="StackPanel01" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3" Background="#E4E3FD" >
+            <Label x:Name="StackPanel01Label01" Content="Customers" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Button x:Name="CustomerNameFilter" Content="Search By Customer Name" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+            <TextBox x:Name="CustomerSearch" KeyUp="CustomerSearch_KeyUp" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+            <TextBox x:Name="CitySearch" KeyUp="CitySearch_KeyUp" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+            <ListBox x:Name="ListBoxCustomers" Height="200" SelectionChanged="ListBoxCustomers_SelectionChanged" MouseDoubleClick="ListBoxCustomers_MouseDoubleClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90"/>
+                                <ColumnDefinition Width="210"/>
+                                <ColumnDefinition Width="120"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding CustomerID}" HorizontalAlignment="Left" />
+                            <TextBlock Grid.Column="1" Text="{Binding ContactName}" HorizontalAlignment="Left" />
+                            <TextBlock Grid.Column="2" Text="{Binding City}" HorizontalAlignment="Left" />
+                       </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel x:Name="StackPanel02" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3" Background="#E4E3FD" >
+            <Label x:Name="StackPanel02Label01" Content="Orders" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <Button x:Name="OrderIDFilter" Content="Search By Order ID" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+            <TextBox x:Name="OrderIDSearch" KeyUp="OrderIDSearch_KeyUp" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+            <ListBox x:Name="ListBoxOrders"  Height="220" SelectionChanged="ListBoxOrders_SelectionChanged" MouseDoubleClick="ListBoxOrders_MouseDoubleClick" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="220"/>
+                                <ColumnDefinition Width="120"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding OrderID}" HorizontalAlignment="Left" />
+                            <TextBlock Grid.Column="1" Text="{Binding OrderDate, StringFormat=dd-MM-yyyy}" HorizontalAlignment="Left" />
+                            <TextBlock Grid.Column="2" Text="{Binding ShipCity}" HorizontalAlignment="Left" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ListBox x:Name="StackPanel01ListBox02" />
+        </StackPanel>
+        <StackPanel x:Name="StackPanel03" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3" Background="#E4E3FD" >
+            <Label x:Name="StackPanel03Label01" Content="Order Information" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+            <ListBox x:Name="ListBoxOrderDetail"  Height="270" Opacity="0.7" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="280"/>
+                                <ColumnDefinition Width="90"/>
+                                <ColumnDefinition Width="60"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding ProductName}" HorizontalAlignment="Left" />
+                            <TextBlock Grid.Column="1" Text="{Binding UnitPrice}" HorizontalAlignment="Left" />
+                            <TextBlock Grid.Column="2" Text="{Binding UnitsInStock}" HorizontalAlignment="Left" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
+        <Button x:Name="ButtonBack" Style="{StaticResource back}" Content="" BorderThickness="0" Grid.Row="4" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="75" Width="75" VerticalAlignment="Center" VerticalContentAlignment="Center" Click="ButtonBack_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="C:/2019-09-c-sharp-labs/labs/lab_24_Customers_App/Images/left.png" ></ImageBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="ButtonForward" Style="{StaticResource next}" Content="" BorderThickness="0" Grid.Row="4" Grid.Column="4" HorizontalAlignment="Center" Height="75" Width="75" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" Click="ButtonForward_Click" >
+            <Button.Background>
+                <ImageBrush ImageSource="C:/2019-09-c-sharp-labs/labs/lab_24_Customers_App/Images/right.png" ></ImageBrush>
+            </Button.Background>
+        </Button>
+        
+    </Grid>
+</Window>

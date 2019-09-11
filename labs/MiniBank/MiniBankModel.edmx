@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MiniBankModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MiniBankModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="AccountID" />
@@ -12,7 +12,7 @@
           <Property Name="AccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerID" Type="int" />
           <Property Name="AccountNumber" Type="varchar" MaxLength="50" />
-          <Property Name="Amount" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Bank_Transaction">
           <Key>
@@ -20,8 +20,10 @@
           </Key>
           <Property Name="TransactionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AccountID" Type="int" />
-          <Property Name="Amount" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
           <Property Name="TransactionType" Type="int" />
+          <Property Name="PreviousBalance" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NewBalance" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -33,13 +35,20 @@
           <Property Name="Email" Type="varchar" MaxLength="150" />
           <Property Name="PIN" Type="varchar" MaxLength="20" />
         </EntityType>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityContainer Name="MiniBankModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bank_Transaction" EntityType="Self.Bank_Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransactionType" EntityType="Self.TransactionType" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MiniBankModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -50,7 +59,7 @@
           <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustomerID" Type="Int32" />
           <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Amount" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" />
         </EntityType>
         <EntityType Name="Bank_Transaction">
           <Key>
@@ -58,8 +67,10 @@
           </Key>
           <Property Name="TransactionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AccountID" Type="Int32" />
-          <Property Name="Amount" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" />
           <Property Name="TransactionType" Type="Int32" />
+          <Property Name="PreviousBalance" Type="Decimal" />
+          <Property Name="NewBalance" Type="Decimal" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -75,7 +86,15 @@
           <EntitySet Name="Accounts" EntityType="Self.Account" />
           <EntitySet Name="Bank_Transaction" EntityType="Self.Bank_Transaction" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="TransactionTypes" EntityType="MiniBankModel.TransactionType" />
         </EntityContainer>
+        <EntityType Name="TransactionType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -95,6 +114,8 @@
           <EntitySetMapping Name="Bank_Transaction">
             <EntityTypeMapping TypeName="MiniBankModel.Bank_Transaction">
               <MappingFragment StoreEntitySet="Bank_Transaction">
+                <ScalarProperty Name="NewBalance" ColumnName="NewBalance" />
+                <ScalarProperty Name="PreviousBalance" ColumnName="PreviousBalance" />
                 <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
                 <ScalarProperty Name="AccountID" ColumnName="AccountID" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -110,6 +131,14 @@
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PIN" ColumnName="PIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransactionTypes">
+            <EntityTypeMapping TypeName="MiniBankModel.TransactionType">
+              <MappingFragment StoreEntitySet="TransactionType">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

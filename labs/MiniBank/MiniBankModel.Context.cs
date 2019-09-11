@@ -28,5 +28,6 @@ namespace MiniBank
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Bank_Transaction> Bank_Transaction { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<TransactionType> TransactionTypes { get; set; }
     }
 }

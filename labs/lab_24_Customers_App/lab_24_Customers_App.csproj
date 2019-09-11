@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0083CDC4-9379-4EE5-BF25-484BF1232666}</ProjectGuid>
+    <ProjectGuid>{3B7DE254-B9BC-401D-B4AE-AE851E0797E1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>MiniBank</RootNamespace>
-    <AssemblyName>MiniBank</AssemblyName>
+    <RootNamespace>lab_24_Customers_App</RootNamespace>
+    <AssemblyName>lab_24_Customers_App</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -64,25 +64,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="TransactionType.cs">
-      <DependentUpon>MiniBankModel.tt</DependentUpon>
+    <Compile Include="Category.cs">
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerDemographic.cs">
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NorthwindModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Order_Detail.cs">
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Region.cs">
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Shipper.cs">
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Territory.cs">
+      <DependentUpon>NorthwindModel.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Account.cs">
-      <DependentUpon>MiniBankModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Bank_Transaction.cs">
-      <DependentUpon>MiniBankModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Customer.cs">
-      <DependentUpon>MiniBankModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -90,20 +116,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MiniBankModel.Context.cs">
+    <Compile Include="NorthwindModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MiniBankModel.Context.tt</DependentUpon>
+      <DependentUpon>NorthwindModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="MiniBankModel.cs">
+    <Compile Include="NorthwindModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MiniBankModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MiniBankModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MiniBankModel.edmx</DependentUpon>
+      <DependentUpon>NorthwindModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -122,12 +143,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="MiniBankModel.edmx">
+    <EntityDeploy Include="NorthwindModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MiniBankModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>NorthwindModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="MiniBankModel.edmx.diagram">
-      <DependentUpon>MiniBankModel.edmx</DependentUpon>
+    <None Include="NorthwindModel.edmx.diagram">
+      <DependentUpon>NorthwindModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -139,15 +160,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MiniBankModel.Context.tt">
+    <Content Include="NorthwindModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MiniBankModel.Context.cs</LastGenOutput>
-      <DependentUpon>MiniBankModel.edmx</DependentUpon>
+      <LastGenOutput>NorthwindModel.Context.cs</LastGenOutput>
+      <DependentUpon>NorthwindModel.edmx</DependentUpon>
     </Content>
-    <Content Include="MiniBankModel.tt">
+    <Content Include="NorthwindModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MiniBankModel.edmx</DependentUpon>
-      <LastGenOutput>MiniBankModel.cs</LastGenOutput>
+      <DependentUpon>NorthwindModel.edmx</DependentUpon>
+      <LastGenOutput>NorthwindModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

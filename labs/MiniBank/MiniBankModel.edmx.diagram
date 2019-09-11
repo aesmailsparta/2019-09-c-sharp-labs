@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6fc5ad0e400e4b2786f3ae283c8c196a" Name="Diagram1">
-        <EntityTypeShape EntityType="MiniBankModel.Account" Width="1.5" PointX="3.625" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MiniBankModel.Bank_Transaction" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MiniBankModel.Customer" Width="1.5" PointX="1" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MiniBankModel.Account" Width="1.5" PointX="3.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MiniBankModel.Bank_Transaction" Width="1.5" PointX="5.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MiniBankModel.Customer" Width="1.5" PointX="1.25" PointY="0.625" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
