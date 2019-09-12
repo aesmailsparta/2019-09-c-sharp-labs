@@ -23,14 +23,13 @@ namespace lab_24_Customers_App
         static List<StackPanel> panels = new List<StackPanel>();
         static List<Customer> customers = new List<Customer>();
         static List<Order> orders = new List<Order>();
-        static List<Order_Detail> order_details = new List<Order_Detail>();
+        //static List<Order_Detail> order_details = new List<Order_Detail>();
         int currentStackIndex = 0;
         static Customer selectedCustomer = null;
         static Order currentSelectedOrder = null;
         public MainWindow()
         {
             InitializeComponent();
-            Initialise();
         }
 
         private void Initialise()
@@ -38,13 +37,13 @@ namespace lab_24_Customers_App
             panels.Add(StackPanel01);
             panels.Add(StackPanel02);
             panels.Add(StackPanel03);
-            setNewPanel();
+            SetNewPanel();
 
             using(var db = new NorthwindEntities())
             {
                 customers = db.Customers.ToList();
                 orders = db.Orders.OrderByDescending(o => o.OrderDate).ToList();
-                order_details = db.Order_Details.ToList();
+                //order_details = db.Order_Details.ToList();
 
                 ListBoxOrders.ItemsSource = orders;
                 ListBoxCustomers.ItemsSource = customers;
@@ -57,7 +56,7 @@ namespace lab_24_Customers_App
             if (currentStackIndex > 0)
             {
                 currentStackIndex--;
-                setNewPanel();
+                SetNewPanel();
             }
         }
 
@@ -66,11 +65,11 @@ namespace lab_24_Customers_App
             if (currentStackIndex < panels.Count - 1)
             {
                 currentStackIndex++;
-                setNewPanel();
+                SetNewPanel();
             }
         }
 
-        private void setNewPanel()
+        private void SetNewPanel()
         {
             for(int x = 0; x < panels.Count; x++)
             {
@@ -115,6 +114,10 @@ namespace lab_24_Customers_App
             selectedCustomer = (Customer)ListBoxCustomers.SelectedItem;
             if(selectedCustomer != null){
                 StackPanel02Label01.Content = $"{selectedCustomer.ContactName} : Previous Orders";
+
+                //selectedCustomerName.Text = selectedCustomer.ContactName;
+                //selectedCustomerCity.Text = selectedCustomer.City;
+                //selectedCustomerRegion.Text = selectedCustomer.Region;
             }
             //MessageBox.Show(selectedCustomer.CustomerID);
         }
@@ -127,10 +130,14 @@ namespace lab_24_Customers_App
                 ListBoxOrders.ItemsSource = orders.Where
                    (o => o.CustomerID.Equals(selectedCustomer.CustomerID)).ToList();
 
+                //selectedCustomerName.Text = selectedCustomer.ContactName;
+                //selectedCustomerCity.Text = selectedCustomer.City;
+                //selectedCustomerRegion.Text = selectedCustomer.Region;
+
                 StackPanel02Label01.Content = $"{selectedCustomer.ContactName} : Previous Orders";
             }
             currentStackIndex = 1;
-            setNewPanel();
+            SetNewPanel();
         }
 
         private void OrderIDSearch_KeyUp(object sender, KeyEventArgs e)
@@ -189,7 +196,7 @@ namespace lab_24_Customers_App
                 }
             }
             currentStackIndex = 2;
-            setNewPanel();
+            SetNewPanel();
         }
     }
 }

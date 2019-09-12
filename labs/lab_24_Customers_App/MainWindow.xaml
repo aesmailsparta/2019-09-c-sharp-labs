@@ -87,7 +87,7 @@
                             <TextBlock Grid.Column="0" Text="{Binding CustomerID}" HorizontalAlignment="Left" />
                             <TextBlock Grid.Column="1" Text="{Binding ContactName}" HorizontalAlignment="Left" />
                             <TextBlock Grid.Column="2" Text="{Binding City}" HorizontalAlignment="Left" />
-                       </Grid>
+                        </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
