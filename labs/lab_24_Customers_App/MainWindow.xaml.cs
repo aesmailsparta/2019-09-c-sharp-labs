@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using System.Data.SqlClient;
 
 namespace lab_24_Customers_App
 {
@@ -30,6 +32,7 @@ namespace lab_24_Customers_App
         public MainWindow()
         {
             InitializeComponent();
+            Initialise();
         }
 
         private void Initialise()
@@ -115,9 +118,9 @@ namespace lab_24_Customers_App
             if(selectedCustomer != null){
                 StackPanel02Label01.Content = $"{selectedCustomer.ContactName} : Previous Orders";
 
-                //selectedCustomerName.Text = selectedCustomer.ContactName;
-                //selectedCustomerCity.Text = selectedCustomer.City;
-                //selectedCustomerRegion.Text = selectedCustomer.Region;
+                selectedCustomerName.Text = selectedCustomer.ContactName;
+                selectedCustomerContactTitle.Text = selectedCustomer.ContactTitle;
+                selectedCustomerCompanyName.Text = selectedCustomer.CompanyName;
             }
             //MessageBox.Show(selectedCustomer.CustomerID);
         }
@@ -130,9 +133,9 @@ namespace lab_24_Customers_App
                 ListBoxOrders.ItemsSource = orders.Where
                    (o => o.CustomerID.Equals(selectedCustomer.CustomerID)).ToList();
 
-                //selectedCustomerName.Text = selectedCustomer.ContactName;
-                //selectedCustomerCity.Text = selectedCustomer.City;
-                //selectedCustomerRegion.Text = selectedCustomer.Region;
+                selectedCustomerName.Text = selectedCustomer.ContactName;
+                selectedCustomerContactTitle.Text = selectedCustomer.ContactTitle;
+                selectedCustomerCompanyName.Text = selectedCustomer.CompanyName;
 
                 StackPanel02Label01.Content = $"{selectedCustomer.ContactName} : Previous Orders";
             }
@@ -197,6 +200,32 @@ namespace lab_24_Customers_App
             }
             currentStackIndex = 2;
             SetNewPanel();
+        }
+
+        private void RefreshNorthwind_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (File.Exists(filePath))
+
+            {
+
+                FileInfo file = new FileInfo(filePath);
+
+                string script = file.OpenText().ReadToEnd();
+
+                using ( SqlConnection conn = new SqlConnection(connectionString))
+
+                {
+
+                    Server server = new Server(new ServerConnection(conn));
+
+                    ReturnValue = server.ConnectionContext.ExecuteNonQuery(script);
+
+                }
+
+                file.OpenText().Close();
+
+            }
         }
     }
 }

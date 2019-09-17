@@ -1,0 +1,49 @@
+﻿<Window x:Class="just_do_it_14_project_1000.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:just_do_it_14_project_1000"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#E5FEF0" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label x:Name="labelHeading" Background="#BFFFF7" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Content="PROJECT 1000" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="7" FontSize="35" FontWeight="Bold" ></Label>
+
+        <Canvas x:Name="DoneCanvas" Grid.Column="3" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+            <Grid x:Name="DoneGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+            </Grid>
+        </Canvas>
+        
+        <ListView x:Name="StudentList" Height="Auto" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="First Name" Width="100px" DisplayMemberBinding="{Binding First_Name}" />
+                    <GridViewColumn Header="Last Name" Width="100px" DisplayMemberBinding="{Binding Last_Name}" />
+                    <GridViewColumn Header="Age" Width="100px" DisplayMemberBinding="{Binding Age}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

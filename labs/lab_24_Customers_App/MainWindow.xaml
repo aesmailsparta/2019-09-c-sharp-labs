@@ -70,7 +70,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Label x:Name="LabelTitle" Content="Customer App" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Grid.Column="0" Grid.ColumnSpan="5" Background="#E0F2FF" FontSize="40" Foreground="SlateGray" FontFamily="Tahoma" />
-        <StackPanel x:Name="StackPanel01" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3" Background="#E4E3FD" >
+        <StackPanel x:Name="StackPanel01" Grid.Row="1" Grid.RowSpan="4" Grid.Column="1" Grid.ColumnSpan="3" Background="#E4E3FD" >
             <Label x:Name="StackPanel01Label01" Content="Customers" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
             <Button x:Name="CustomerNameFilter" Content="Search By Customer Name" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
             <TextBox x:Name="CustomerSearch" KeyUp="CustomerSearch_KeyUp" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
@@ -91,6 +91,9 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <TextBlock x:Name="selectedCustomerName" Height="30" Padding="10 0 0 0" />
+            <TextBlock x:Name="selectedCustomerContactTitle" Height="30" Padding="10 0 0 0" />
+            <TextBlock x:Name="selectedCustomerCompanyName" Height="30" Padding="10 0 0 0" />
         </StackPanel>
         <StackPanel x:Name="StackPanel02" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="3" Background="#E4E3FD" >
             <Label x:Name="StackPanel02Label01" Content="Orders" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
@@ -134,6 +137,8 @@
             </ListBox>
         </StackPanel>
 
+        <Button x:Name="RefreshNorthwind" Content="Refresh Northwind" BorderThickness="0" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="75" Width="auto" VerticalAlignment="Center" VerticalContentAlignment="Center" Padding="10" Click="RefreshNorthwind_Click" />
+ 
         <Button x:Name="ButtonBack" Style="{StaticResource back}" Content="" BorderThickness="0" Grid.Row="4" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Height="75" Width="75" VerticalAlignment="Center" VerticalContentAlignment="Center" Click="ButtonBack_Click">
             <Button.Background>
                 <ImageBrush ImageSource="C:/2019-09-c-sharp-labs/labs/lab_24_Customers_App/Images/left.png" ></ImageBrush>
