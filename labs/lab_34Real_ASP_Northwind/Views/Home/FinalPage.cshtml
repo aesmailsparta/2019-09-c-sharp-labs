@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "FinalPage";
+}
+
+<style>
+
+    ul{
+        background-color:darkseagreen;
+    }
+
+    li{
+        background-color: seagreen;
+        color:white;
+    }
+
+    span{
+        background-color: white;
+        color:black;
+    }
+
+</style>
+
+<h2>This is your Final Page</h2>
+
+<h3>Title is @ViewBag.Title</h3>
+
+<br />
+
+<h4>Extra is @ViewBag.OtherData</h4>
+
+<br />
+
+<ul>
+    @foreach(var item in ViewBag.MyList)
+    {
+        <li><span>@item</span></li>
+    }
+</ul>

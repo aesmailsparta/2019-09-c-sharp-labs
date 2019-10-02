@@ -1,0 +1,3 @@
+@Imports lab_34_API_Northwind.Areas.HelpPage.ModelDescriptions
+@ModelType SimpleTypeModelDescription
+@Model.Documentation

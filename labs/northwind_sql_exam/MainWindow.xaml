@@ -1,0 +1,310 @@
+﻿<Window x:Class="northwind_sql_exam.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:northwind_sql_exam"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl x:Name="TabController" >
+            <TabItem x:Name="Q1" Header="1.1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label x:Name="DashboardTitle" HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="LightSteelBlue" >Question 1.1</Label>
+                    <Label HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="LightSteelBlue" >Customers from Paris and London</Label>
+                   
+                    <ListView x:Name="Q1Results" Grid.Row="2" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="5" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top" Height="150" Width="Auto" Margin="20,0,0,0.2" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Customer ID" Width="70" DisplayMemberBinding="{Binding CustomerID}" />
+                                <GridViewColumn Header="Company Name" Width="110" DisplayMemberBinding="{Binding CompanyName}" />
+                                <GridViewColumn Header="Address" Width="90" DisplayMemberBinding="{Binding Address}" />
+                                <GridViewColumn Header="City" Width="110" DisplayMemberBinding="{Binding City}" />
+                                <GridViewColumn Header="Post Code" Width="110" DisplayMemberBinding="{Binding PostalCode}" />
+                                <GridViewColumn Header="Country" Width="110" DisplayMemberBinding="{Binding Country}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="RunQuery1" Click="RunQuery1_Click" Grid.Row="7" Grid.Column="0" Height="30" Width="100" Content="Run Query" FontSize="18" FontWeight="Bold"/>
+                    <Button Click="NavHomeButton_Click" Grid.Row="7" Grid.Column="6" Height="30" Width="100" Content="Home" FontSize="20" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Q2" Header="1.2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="LightSteelBlue" >Question 1.2</Label>
+                    <Label HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="LightSteelBlue" >Products stored in bottles</Label>
+                   
+                    <ListView x:Name="Q2Results" Grid.Row="2" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="5" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top" Height="150" Width="Auto" Margin="20,0,0,0.2" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Product ID" Width="70" DisplayMemberBinding="{Binding ProductID}" />
+                                <GridViewColumn Header="Product Name" Width="110" DisplayMemberBinding="{Binding ProductName}" />
+                                <GridViewColumn Header="Quantity Per Unit" Width="90" DisplayMemberBinding="{Binding QuantityPerUnit}" />
+                                <GridViewColumn Header="Unit Price" Width="110" DisplayMemberBinding="{Binding UnitPrice}" />
+                                <GridViewColumn Header="Units In Stock" Width="110" DisplayMemberBinding="{Binding UnitsInStock}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="RunQuery2" Click="RunQuery2_Click" Grid.Row="7" Grid.Column="0" Height="30" Width="100" Content="Run Query" FontSize="18" FontWeight="Bold"/>
+                    <Button Click="NavHomeButton_Click" Grid.Row="7" Grid.Column="6" Height="30" Width="100" Content="Home" FontSize="20" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Q3" Header="1.3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="LightSteelBlue" >Question 1.3</Label>
+                    <Label HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="LightSteelBlue" >Products stored in bottles, with supplier name and country</Label>
+                   
+                    <ListView x:Name="Q3Results" Grid.Row="2" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="5" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top" Height="150" Width="Auto" Margin="20,0,0,0.2" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Product ID" Width="70" DisplayMemberBinding="{Binding ProductID}" />
+                                <GridViewColumn Header="Product Name" Width="110" DisplayMemberBinding="{Binding ProductName}" />
+                                <GridViewColumn Header="Quantity Per Unit" Width="90" DisplayMemberBinding="{Binding QuantityPerUnit}" />
+                                <GridViewColumn Header="Unit Price" Width="110" DisplayMemberBinding="{Binding UnitPrice}" />
+                                <GridViewColumn Header="Units In Stock" Width="110" DisplayMemberBinding="{Binding UnitsInStock}" />
+                                <GridViewColumn Header="Supplier Name" Width="110" DisplayMemberBinding="{Binding CompanyName}" />
+                                <GridViewColumn Header="Supplier Country" Width="110" DisplayMemberBinding="{Binding Country}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="RunQuery3" Click="RunQuery3_Click" Grid.Row="7" Grid.Column="0" Height="30" Width="100" Content="Run Query" FontSize="18" FontWeight="Bold"/>
+                    <Button Click="NavHomeButton_Click" Grid.Row="7" Grid.Column="6" Height="30" Width="100" Content="Home" FontSize="20" FontWeight="Bold"/>
+                </Grid>
+            </TabItem> 
+            <TabItem x:Name="Q4" Header="1.4">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="LightSteelBlue" >Question 1.4</Label>
+                    <Label HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="LightSteelBlue" >Number of products in each category, ordered by highest number of products</Label>
+                   
+                    <ListView x:Name="Q4Results" Grid.Row="2" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="5" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top" Height="150" Width="Auto" Margin="20,0,0,0.2" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Category Name" Width="150" DisplayMemberBinding="{Binding CategoryName}" />
+                                <GridViewColumn Header="Number Of Products" Width="150" DisplayMemberBinding="{Binding NumberOfProducts}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="RunQuery4" Click="RunQuery4_Click" Grid.Row="7" Grid.Column="0" Height="30" Width="100" Content="Run Query" FontSize="18" FontWeight="Bold"/>
+                    <Button Click="NavHomeButton_Click" Grid.Row="7" Grid.Column="6" Height="30" Width="100" Content="Home" FontSize="20" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Q5" Header="1.5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="LightSteelBlue" >Question 1.5</Label>
+                    <Label HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="LightSteelBlue" >UK Employee names concatenated with title, with city of residence</Label>
+                   
+                    <ListView x:Name="Q5Results" Grid.Row="2" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="5" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top" Height="150" Width="Auto" Margin="20,0,0,0.2" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Full Name" Width="250" DisplayMemberBinding="{Binding FullName}" />
+                                <GridViewColumn Header="City" Width="150" DisplayMemberBinding="{Binding City}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="RunQuery5" Click="RunQuery5_Click" Grid.Row="7" Grid.Column="0" Height="30" Width="100" Content="Run Query" FontSize="18" FontWeight="Bold"/>
+                    <Button Click="NavHomeButton_Click" Grid.Row="7" Grid.Column="6" Height="30" Width="100" Content="Home" FontSize="20" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Q6" Header="1.6">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="LightSteelBlue" >Question 1.6</Label>
+                    <Label HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="LightSteelBlue" >Sales totals for each sales region with sales greater than 1000000, using FORMAT for numbers</Label>
+                   
+                    <ListView x:Name="Q6Results" Grid.Row="2" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="6" HorizontalAlignment="Left" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top" Height="150" Width="500" Margin="20,0,0,0.2" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Customer ID" Width="70" DisplayMemberBinding="{Binding CustomerID}" />
+                                <GridViewColumn Header="Company Name" Width="110" DisplayMemberBinding="{Binding CompanyName}" />
+                                <GridViewColumn Header="Address" Width="90" DisplayMemberBinding="{Binding Address}" />
+                                <GridViewColumn Header="City" Width="110" DisplayMemberBinding="{Binding City}" />
+                                <GridViewColumn Header="Region" Width="110" DisplayMemberBinding="{Binding Region}" />
+                                <GridViewColumn Header="Post Code" Width="110" DisplayMemberBinding="{Binding PostalCode}" />
+                                <GridViewColumn Header="Country" Width="110" DisplayMemberBinding="{Binding Country}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button x:Name="RunQuery6" Click="RunQuery6_Click" Grid.Row="7" Grid.Column="0" Height="30" Width="100" Content="Run Query" FontSize="18" FontWeight="Bold"/>
+                    <Button Click="NavHomeButton_Click" Grid.Row="7" Grid.Column="6" Height="30" Width="100" Content="Home" FontSize="20" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Q7" Header="1.7">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="LightSteelBlue" >Question 1.7</Label>
+                    <Label HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="LightSteelBlue" >Orders with a freight amount greater than 100.00 And that ship to either USA or UK</Label>
+
+                    <Label Grid.Row="2" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="5" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top" Width="Auto" Margin="20,0,0,0.2" FontSize="25" FontWeight="Bold" Foreground="DodgerBlue" >Number of Orders:</Label>
+                    <Label x:Name="Q7Results" Grid.Row="4" Grid.Column="1" Grid.RowSpan="5" Grid.ColumnSpan="5" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top" Width="Auto" Margin="20,0,0,0.2" FontSize="40" FontWeight="Bold" Foreground="DodgerBlue" ></Label>
+                    
+                    <Button x:Name="RunQuery7" Click="RunQuery7_Click" Grid.Row="7" Grid.Column="0" Height="30" Width="100" Content="Run Query" FontSize="18" FontWeight="Bold"/>
+                    <Button Click="NavHomeButton_Click" Grid.Row="7" Grid.Column="6" Height="30" Width="100" Content="Home" FontSize="20" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="Q8" Header="1.8">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="50" FontWeight="Bold" Foreground="LightSteelBlue" >Question 1.8</Label>
+                    <Label HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="LightSteelBlue" >Order number of the order with the highest amount of discount applied</Label>
+
+                    <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top" Width="Auto" Margin="20,0,0,0.2" FontSize="18" FontWeight="Bold" Foreground="DodgerBlue" >Order Number with Largest Discount:</Label>
+                    <Label x:Name="Q8Results" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top" Width="Auto" Margin="20,0,0,0.2" FontSize="18" FontWeight="Bold" Foreground="DodgerBlue" ></Label>
+                    <Label x:Name="Q8Discount" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="5" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top" Width="Auto" Margin="20,0,0,0.2" FontSize="18" FontWeight="Bold" Foreground="DodgerBlue" ></Label>
+                    <Label x:Name="Q8DiscountAmount" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="5" HorizontalAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" VerticalContentAlignment="Top" Width="Auto" Margin="20,0,0,0.2" FontSize="18" FontWeight="Bold" Foreground="DodgerBlue" ></Label>
+        
+                    <Button x:Name="RunQuery8" Click="RunQuery8_Click" Grid.Row="7" Grid.Column="0" Height="30" Width="100" Content="Run Query" FontSize="18" FontWeight="Bold"/>
+                    <Button Click="NavHomeButton_Click" Grid.Row="7" Grid.Column="6" Height="30" Width="100" Content="Home" FontSize="20" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
