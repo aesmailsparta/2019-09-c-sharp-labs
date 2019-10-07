@@ -34,10 +34,10 @@ namespace lab_33_oop_events
             Console.WriteLine("Congratulation !!!! Beautiful Baby /(\",/)");
         }
 
-        public void Grow(string TypeOfParty)
+        public int Grow(string TypeOfParty)
         {
             int AgeNow = HaveABirthday(TypeOfParty);
-            //return AgeNow;
+            return AgeNow;
         }
 
         int Celebrate(string TypeOfParty)

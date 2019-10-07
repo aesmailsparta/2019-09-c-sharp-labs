@@ -42,7 +42,7 @@ namespace do_it_wpf_rabbits
             
         }
 
-        public initialise()
+        public void initialise()
         {
             var rabbitGrower = new RabbitsGrowth(mainCanvas);
 

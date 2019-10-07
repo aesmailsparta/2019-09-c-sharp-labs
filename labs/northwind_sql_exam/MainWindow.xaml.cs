@@ -248,7 +248,61 @@ namespace northwind_sql_exam
 
         private void RunQuery6_Click(object sender, RoutedEventArgs e)
         {
+            //SELECT Region.RegionID, Region.RegionDescription, SUM([Order Details].Quantity * [Order Details].UnitPrice) AS 'Total Sales'
+            //FROM Territories
+            //INNER JOIN EmployeeTerritories
+            //ON Territories.TerritoryID = EmployeeTerritories.TerritoryID
+            //INNER JOIN Region
+            //ON Region.RegionID = Territories.RegionID
+            //INNER JOIN Orders
+            //ON EmployeeTerritories.EmployeeID = Orders.EmployeeID
+            //INNER JOIN[Order Details]
+            //ON Orders.OrderID = [Order Details].OrderID
+            //GROUP BY Region.RegionID, Region.RegionDescription
+            //HAVING SUM([Order Details].Quantity * [Order Details].UnitPrice) > 1000000;
 
+            using (var connection2 = new SqlConnection(connectionString))
+            {
+                connection2.Open();
+
+                string SQLQuery = $"SELECT Region.RegionID, Region.RegionDescription, FORMAT(SUM([Order Details].Quantity * [Order Details].UnitPrice), 'C0') AS 'TotalSales'" +
+                                    $" FROM Territories" +
+                                    $" INNER JOIN EmployeeTerritories" +
+                                    $" ON Territories.TerritoryID = EmployeeTerritories.TerritoryID" +
+                                    $" INNER JOIN Region" +
+                                    $" ON Region.RegionID = Territories.RegionID" +
+                                    $" INNER JOIN Orders" +
+                                    $" ON EmployeeTerritories.EmployeeID = Orders.EmployeeID" +
+                                    $" INNER JOIN[Order Details]" +
+                                    $" ON Orders.OrderID = [Order Details].OrderID" +
+                                    $" GROUP BY Region.RegionID, Region.RegionDescription" +
+                                    $" HAVING SUM([Order Details].Quantity * [Order Details].UnitPrice) > 1000000" +
+                                    $" ORDER BY Region.RegionID";
+
+                List<object> regions = new List<object>();
+
+                using (var sqlcommand = new SqlCommand(SQLQuery, connection2))
+                {
+                    var reader = sqlcommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var RegionID = reader["RegionID"].ToString();
+                        var RegionDescription = reader["RegionDescription"].ToString();
+                        var TotalSales = reader["TotalSales"].ToString();
+
+                        var region = new
+                        {
+                            RegionID = RegionID,
+                            RegionDescription = RegionDescription,
+                            TotalSales = TotalSales
+                        };
+
+                        regions.Add(region);
+                    }
+
+                    Q6Results.ItemsSource = regions;
+                }
+            }
         }
 
         private void RunQuery7_Click(object sender, RoutedEventArgs e)
@@ -312,6 +366,98 @@ namespace northwind_sql_exam
             Q1.IsSelected = true;
             //SELECT TOP 1 OrderID, Discount, ((UnitPrice * Quantity) * Discount) AS 'DiscountApplied' FROM[Order Details]
             //ORDER BY 'DiscountApplied' DESC, Discount DESC
+
+        }
+
+        private void RunQuery9_Click(object sender, RoutedEventArgs e)
+        {
+            //SELECT Employees.EmployeeID, CONCAT(Employees.FirstName, ' ', Employees.LastName) AS EmployeeName, CONCAT(Managers.FirstName, ' ', Managers.LastName) AS ReportTo
+            //FROM Employees
+            //INNER JOIN Employees AS Managers
+            //ON Employees.ReportsTo = Managers.EmployeeID
+            using (var connection2 = new SqlConnection(connectionString))
+            {
+                connection2.Open();
+
+                string SQLQuery = $"SELECT Employees.EmployeeID, CONCAT(Employees.FirstName, ' ', Employees.LastName) AS 'EmployeeName', CONCAT(Managers.FirstName, ' ', Managers.LastName) AS 'ReportTo'" +
+                                    $" FROM Employees" +
+                                    $" JOIN Employees AS Managers" +
+                                    $" ON Employees.ReportsTo = Managers.EmployeeID";
+
+                List<object> employees = new List<object>();
+
+                using (var sqlcommand = new SqlCommand(SQLQuery, connection2))
+                {
+                    var reader = sqlcommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var EmployeeID = reader["EmployeeID"].ToString();
+                        var EmployeeName = reader["EmployeeName"].ToString();
+                        var ReportTo = reader["ReportTo"].ToString() == null ? "Nobody" : reader["ReportTo"].ToString();
+
+                        var employee = new
+                        {
+                            EmployeeID = EmployeeID,
+                            EmployeeName = EmployeeName,
+                            ReportTo = ReportTo
+                        };
+
+                        employees.Add(employee);
+                    }
+
+                    Q9Results.ItemsSource = employees;
+                }
+            }
+        }
+
+        private void RunQuery10_Click(object sender, RoutedEventArgs e)
+        {
+            //SELECT Suppliers.SupplierID, Suppliers.CompanyName, FORMAT(SUM([Order Details].Quantity * [Order Details].UnitPrice * (1 -[Order Details].Discount)), 'C0', 'en-gb') AS 'TotalSales(Including Discount)'
+            //FROM[Order Details]
+            //JOIN Products
+            //ON[Order Details].ProductID = Products.ProductID
+            //JOIN Suppliers
+            //ON Products.SupplierID = Suppliers.SupplierID
+            //GROUP BY Suppliers.SupplierID, Suppliers.CompanyName
+            //HAVING SUM([Order Details].Quantity * [Order Details].UnitPrice * (1 -[Order Details].Discount)) > 10000
+
+            using (var connection2 = new SqlConnection(connectionString))
+            {
+                connection2.Open();
+
+                string SQLQuery = $"SELECT Suppliers.SupplierID, Suppliers.CompanyName, FORMAT(SUM([Order Details].Quantity * [Order Details].UnitPrice * (1 -[Order Details].Discount)), 'C0', 'en-gb') AS 'TotalSales(Including Discount)'" +
+                                    $" FROM[Order Details]" +
+                                    $" JOIN Products" +
+                                    $" ON[Order Details].ProductID = Products.ProductID" +
+                                    $" JOIN Suppliers" +
+                                    $" ON Products.SupplierID = Suppliers.SupplierID" +
+                                    $" GROUP BY Suppliers.SupplierID, Suppliers.CompanyName" +
+                                    $" HAVING SUM([Order Details].Quantity * [Order Details].UnitPrice * (1 -[Order Details].Discount)) > 10000";
+
+                List<object> suppliers = new List<object>();
+
+                using (var sqlcommand = new SqlCommand(SQLQuery, connection2))
+                {
+                    var reader = sqlcommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var SupplierID = reader["SupplierID"].ToString();
+                        var CompanyName = reader["CompanyName"].ToString();
+                        var TotalSales = reader["TotalSales(Including Discount)"].ToString();
+
+                        var supplier = new
+                        {
+                            SupplierID = SupplierID,
+                            CompanyName = CompanyName,
+                            TotalSales = TotalSales
+                        };
+
+                        suppliers.Add(supplier);
+                    }
+
+                    Q10Results.ItemsSource = suppliers;
+                }
+            }
 
         }
     }

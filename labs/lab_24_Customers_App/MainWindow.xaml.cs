@@ -205,27 +205,27 @@ namespace lab_24_Customers_App
         private void RefreshNorthwind_Click(object sender, RoutedEventArgs e)
         {
 
-            if (File.Exists(filePath))
+            //if (File.Exists(filePath))
 
-            {
+            //{
 
-                FileInfo file = new FileInfo(filePath);
+            //    FileInfo file = new FileInfo(filePath);
 
-                string script = file.OpenText().ReadToEnd();
+            //    string script = file.OpenText().ReadToEnd();
 
-                using ( SqlConnection conn = new SqlConnection(connectionString))
+            //    using ( SqlConnection conn = new SqlConnection(connectionString))
 
-                {
+            //    {
 
-                    Server server = new Server(new ServerConnection(conn));
+            //        Server server = new Server(new ServerConnection(conn));
 
-                    ReturnValue = server.ConnectionContext.ExecuteNonQuery(script);
+            //        ReturnValue = server.ConnectionContext.ExecuteNonQuery(script);
 
-                }
+            //    }
 
-                file.OpenText().Close();
+            //    file.OpenText().Close();
 
-            }
+            //}
         }
     }
 }

@@ -2,6 +2,7 @@ using NUnit.Framework;
 using lab_12_test_me_out;
 using do_it_08_tests_raise_to_power;
 using do_it_rabbit_explosion;
+using lab_just_do_it_enum_with__tests;
 
 namespace Tests
 {
@@ -55,6 +56,16 @@ namespace Tests
             int popCount = tuple.population;
             Assert.AreEqual(expected, actual);
             Assert.AreEqual(populationLimit, popCount);
+        }
+
+        [TestCase(2,12, "Tuesday", "December")]
+        [TestCase(5,4, "Friday", "April")]
+        [TestCase(3,8, "Wednesday", "August")]
+        public void TestGetDayMonth(int day, int month, string expectedDay, string expectedMonth)
+        {
+            var actual = lab_just_do_it_enum_with__tests.TestEnums.GetDayMonth(day, month);
+            var expected = (expectedDay, expectedMonth);
+            Assert.AreEqual(actual, expected);
         }
     }
 }

@@ -20,12 +20,12 @@ namespace OOP_all_in_one
             Console.WriteLine("I am the Original");
         }
 
-        string DoThat(string duplicate)
+        public string DoThat(string duplicate)
         {
             return duplicate + duplicate;
         }
 
-        string DoThis(string concatenate)
+        public string DoThis(string concatenate)
         {
             return concatenate + "RandomString";
         }
@@ -43,11 +43,11 @@ namespace OOP_all_in_one
 
     interface IDoThis
     {
-        string DoThis();
+        string DoThis(string s);
     }
 
     interface IDoThat
     {
-        string DoThat();
+        string DoThat(string s);
     }
 }

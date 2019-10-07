@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\lab_40_core_library\lab_40_core_library.csproj" />
+    <Reference Include="lab_40_core_library" >
+      <HintPath>..\lab_40_core_library\bin\Debug\netstandard2.0\lab_40_core_library.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>

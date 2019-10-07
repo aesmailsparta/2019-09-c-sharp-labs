@@ -200,10 +200,10 @@ namespace wpf_rabbits_explosion_new
         }
     }
 
-    class Rabbit
+    partial class Rabbit
     {
-        public string Name { get; set; }
-        public int Age { get; set; }
+        //    public string Name { get; set; }
+        //    public int Age { get; set; }
 
         public Rabbit(string Name, int Age)
         {

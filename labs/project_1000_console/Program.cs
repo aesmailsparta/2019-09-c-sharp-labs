@@ -99,7 +99,7 @@ namespace project_1000_console
 
             foreach (Student s in students)
             {
-                File.AppendAllText("students.csv", $"{s.}, {}, {}, {}");
+                File.AppendAllText("students.csv", $"{s.StudentID}, {s.Age}, {s.Instructor}");
             }
             File.AppendAllText("students.csv", "");
             File.WriteAllText("students.csv", "");
