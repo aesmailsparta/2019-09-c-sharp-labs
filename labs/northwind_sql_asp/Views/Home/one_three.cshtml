@@ -29,11 +29,17 @@
     <tbody>
         @{int counter = 0;}
 
-        @foreach (var item in ViewBag.q)
+        @foreach ((int ProductID, string ProductName, string QuantityPerUnit, short? UnitsInStock, decimal? UnitPrice, string CompanyName, string Country) product in ViewBag.product)
         {
             var color = counter % 2 == 0?  "style=background-color:#bbb" : "style=background-color:#eee";
             <tr @color  >
-                <td>@item</td>
+                <td>@product.ProductID</td>
+                <td>@product.ProductName</td>
+                <td>@product.QuantityPerUnit</td>
+                <td>@product.UnitPrice</td>
+                <td>@product.UnitsInStock</td>
+                <td>@product.CompanyName</td>
+                <td>@product.Country</td>
             </tr>
             counter++;
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Soap;
 using System.IO;
+using System.Net;
 
 namespace lab_45_streaming
 {
@@ -50,13 +51,38 @@ namespace lab_45_streaming
             }
             Console.WriteLine(File.ReadAllText(filename));
             //REVERSE PROCESS ==> Stream back and Deserialize data
-            using (var reader = File.OpenRead(filename))
+            //using (var reader = File.OpenRead(filename))
+            //{
+            //    //Deserialize to list
+            //    customersForXML = formatter.Deserialize(reader) as List<Customer>;
+            //}
+
+            var getHTMLData = WebRequest.Create("https://raw.githubusercontent.com/philanderson888/data/master/Customers.xml");
+            getHTMLData.Proxy = null;
+
+            using(var webresponse = getHTMLData.GetResponse())
+            {
+                using(var webstream = webresponse.GetResponseStream())
+                {
+                    //Get web stream above now new strea for local fs processing
+                    using (var filestream = File.Create("CustomersFromWeb.xml"))
+                    {
+                        webstream.CopyTo(filestream);
+                    }
+                }
+            }
+
+            using (var reader = File.OpenRead("CustomersFromWeb.xml"))
             {
                 //Deserialize to list
                 customersForXML = formatter.Deserialize(reader) as List<Customer>;
             }
 
             customersForXML.ForEach(c => Console.WriteLine($"{c.CustomerID, -10} {c.ContactName, -20} {c.CompanyName, -20} {c.City}"));
+        
+            //Repeat simulate streaming from the internet
+
+        
         }
     }
 

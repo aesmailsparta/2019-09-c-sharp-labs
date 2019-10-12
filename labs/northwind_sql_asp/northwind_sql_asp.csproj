@@ -303,6 +303,14 @@
     <Content Include="Views\Home\one_one.cshtml" />
     <Content Include="Views\Home\one_two.cshtml" />
     <Content Include="Views\Home\one_three.cshtml" />
+    <Content Include="Views\Home\one_four.cshtml" />
+    <Content Include="Views\Home\three_two.cshtml" />
+    <Content Include="Views\Home\three_one.cshtml" />
+    <Content Include="Views\Home\one_eight.cshtml" />
+    <Content Include="Views\Home\one_seven.cshtml" />
+    <Content Include="Views\Home\one_six.cshtml" />
+    <Content Include="Views\Home\one_five.cshtml" />
+    <Content Include="Views\Home\three_three.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
