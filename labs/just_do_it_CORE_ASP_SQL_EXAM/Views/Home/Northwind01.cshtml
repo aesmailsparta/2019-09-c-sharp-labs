@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Northwind01";
+}
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Name</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Customer c in ViewBag.Customers)
+        {
+            <tr>
+                <td>@c.CustomerID</td>
+                <td>@c.ContactName</td>
+                <td>@c.City</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .customer > .customer_photo{
+        height:150px;
+        width:150px;
+        margin:30px auto;
+        margin-bottom: 5px;
+        border-radius:100%;
+        background:url(https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg);
+        background-position: center;
+        background-size: 225px;
+        background-repeat:no-repeat;
+    }
+    .customer > .customer_info{
+        font-weight:bold;
+        font-family:Helvetica;
+        text-align:center;
+    }
+</style>
+
+<div class="row">
+    @foreach (Customer c in ViewBag.Customers)
+    {
+        <div class="col-4 customer">
+            <div class="customer_photo"></div>
+            <div class="customer_info" >@c.ContactName</div>
+            <div class="customer_info" >City: @c.City</div>
+        </div>
+    }
+</div>
